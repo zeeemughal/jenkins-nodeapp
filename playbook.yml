@@ -1,0 +1,37 @@
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: add node repo
+      yum_repository:
+        name: nodejs  
+        baseurl: https://rpm.nodesource.com/setup_16.x # not required. URL to the directory where the yum repository's 'repodata' directory lives. It can also be a list of multiple URLs. This, the I(metalink) or I(mirrorlist) parameters are required if I(state) is set to C(present).
+        enabled: yes # not required. This tells yum whether or not use this repository.
+    - name: add node repo
+      yum_repository:
+        name: mongodb
+        baseurl: https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
+        gpgkey: https://www.mongodb.org/static/pgp/server-4.2.asc
+        enabled: true
+    - name: install epel repo
+      yum:
+        name: epel-release
+        state: present
+    - name: run yum update
+      yum:
+        name: '*'
+        state: latest
+    - name: install node
+      yum:
+        name: npm
+        state: present
+    - name: install mongodb client
+      yum: 
+        name: mongodb-org
+        state: present
+    - name: enable and start mongo service
+      service:
+        name: mongod
+        state: started
+        enabled: true
+        
