@@ -22,7 +22,7 @@
         state: latest
     - name: install node
       yum:
-        name: npm
+        name: nodejs
         state: present
     - name: install mongodb client
       yum: 
