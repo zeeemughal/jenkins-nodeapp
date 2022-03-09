@@ -1,5 +1,5 @@
 pipeline {
-    agent {label:'docker-arm'}
+    agent {label'docker-arm'}
     stages{
         stage('get code from git') {
             steps {
