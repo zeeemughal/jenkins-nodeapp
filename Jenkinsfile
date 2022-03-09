@@ -12,4 +12,9 @@ pipeline {
             }
         }
     }
+    post {
+        mail to: 'gisselle.reynolds0@ethereal.email',
+                subject: "status of pipleline ${currentBuild.fullDisplayName}",
+                body: "${env.BUILD_URL} has result ${currentBuild.result}"
+    }
 }
