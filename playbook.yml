@@ -8,6 +8,7 @@
         description: add node repo
         baseurl: https://rpm.nodesource.com/setup_16.x # not required. URL to the directory where the yum repository's 'repodata' directory lives. It can also be a list of multiple URLs. This, the I(metalink) or I(mirrorlist) parameters are required if I(state) is set to C(present).
         enabled: yes # not required. This tells yum whether or not use this repository.
+        state: absent
     - name: add node repo
       yum_repository:
         name: mongodb
