@@ -1,7 +1,7 @@
 job('nodeapp-dsl') {
     description('deploy nodeapp on docker container')
     scm {
-        git('','master')
+        git('https://github.com/zeeemughal/jenkins-nodeapp.git','master')
     }
     triggers {
         githubPush()
