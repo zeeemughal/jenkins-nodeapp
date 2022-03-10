@@ -1,0 +1,18 @@
+job('nodeapp-dsl') {
+    description('deploy nodeapp on docker container')
+    scm {
+        git('','master')
+    }
+    triggers {
+        githubPush()
+    }
+    steps {
+        shell(""" 
+        docker-compose build
+        docker-compose up -d
+        """)
+    }
+    publishers {
+        mailer('gisselle.reynolds0@ethereal.email',true,true)
+    }
+}

@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nodeapp:
+    image: node-alpine
+    build:  .
+    container_name: nodeapp_c
+    ports:
+    - "3000:3000"
+    volumes:
+      - appData:/app
+      - /app/node_modules
+    networks:
+      - nodeNetwork
+volumes:
+  appData:
+networks:
+  nodeNetwork:
