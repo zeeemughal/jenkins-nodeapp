@@ -10,21 +10,18 @@ on:
     branches: [ "master" ]
 defaults:
   run:
-    working-directory: ./src
+    working-directory: src
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./src
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - run: cd src
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
