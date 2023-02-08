@@ -6,9 +6,9 @@ services:
     container_name: nodeapp_c
     ports:
     - "3000:3000"
-    volumes:
-      - ./src:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./src:/app
+    #   - /app/node_modules
     networks:
       - nodeNetwork
 volumes:
